@@ -17,8 +17,7 @@ const createPoll=asyncHandler(async(req,res)=>{
 })
 
 const getAllPolls = asyncHandler(async (req, res) => {
-    const polls = await Poll.find();
-  
+    const polls = await Poll.find().sort({ createdAt: -1 });
     return res
       .status(200)
       .json(new ApiResponse(200, polls, "Polls fetched successfully"));
